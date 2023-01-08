@@ -62,7 +62,7 @@ pub fn rust_main() -> ! {
     println!("[kernel] Hello, world!");
     heap_alloc::init_heap();
     trap::init();
-    loader::load_apps();
+    loader::load_apps(); // 将用户态的测例加载进来
     trap::enable_timer_interrupt();
     timer::set_next_trigger();
     task::run_first_task();

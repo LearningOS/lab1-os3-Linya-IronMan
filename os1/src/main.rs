@@ -17,6 +17,8 @@ fn clear_bss() {
         fn sbss();
         fn ebss();
     }
+    // 清空 .bss 段
+    // bss 段保存的是未初始化的全局变量，那它们就应该是或者其他一个表示 uninitial 的内容，而非未清空之前那样内容未知、随机
     (sbss as usize..ebss as usize).for_each(|a| unsafe { (a as *mut u8).write_volatile(0) });
 }
 
